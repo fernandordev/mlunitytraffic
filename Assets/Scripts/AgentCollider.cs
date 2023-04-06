@@ -67,12 +67,4 @@ public class AgentCollider : MonoBehaviour
             timesInsideCollider.Remove(other.gameObject);
         }
     }
-
-    public void PrintTimesInsideCollider()
-    {
-        foreach (KeyValuePair<GameObject, float> pair in timesInsideCollider)
-        {
-            Debug.Log(pair.Key.name + " entered the collider at time " + pair.Value);
-        }
-    }
 }
