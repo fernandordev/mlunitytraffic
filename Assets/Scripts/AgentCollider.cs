@@ -8,7 +8,7 @@ public class AgentCollider : MonoBehaviour
     public bool drawDebugBox = true;
     public List<GameObject> objectsInsideCollider = new List<GameObject>();
     public string tagToDetect = "AutonomousVehicle";
-    private Dictionary<GameObject, float> timesInsideCollider = new Dictionary<GameObject, float>();
+    public Dictionary<GameObject, float> timesInsideCollider = new Dictionary<GameObject, float>();
 
     private void OnDrawGizmosSelected()
     {
@@ -63,7 +63,7 @@ public class AgentCollider : MonoBehaviour
             objectsInsideCollider.Remove(other.gameObject);
             float timeEntered = timesInsideCollider[other.gameObject];
             float timeInside = Time.time - timeEntered;
-            Debug.Log(other.gameObject.name + " was inside the collider for " + timeInside + " seconds");
+            // Debug.Log(other.gameObject.name + " was inside the collider for " + timeInside + " seconds");
             timesInsideCollider.Remove(other.gameObject);
         }
     }

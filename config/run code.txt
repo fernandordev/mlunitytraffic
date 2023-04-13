@@ -1,0 +1,91 @@
+mlagents-learn config/intersection_config.yaml --run-id=IntersectionAgent
+
+public override void CollectObservations(VectorSensor sensor)
+    {
+        int numObjectsInColliderA = colliderA.GetComponent<AgentCollider>().objectsInsideCollider.Count;
+        sensor.AddObservation(numObjectsInColliderA);
+        foreach (GameObject obj in colliderA.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderA.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                sensor.AddObservation(timeInside);
+            }
+        }
+        int numObjectsInColliderB = colliderB.GetComponent<AgentCollider>().objectsInsideCollider.Count;
+        sensor.AddObservation(numObjectsInColliderB);
+        foreach (GameObject obj in colliderB.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderB.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                sensor.AddObservation(timeInside);
+            }
+        }
+        int numObjectsInColliderC = colliderC.GetComponent<AgentCollider>().objectsInsideCollider.Count;
+        sensor.AddObservation(numObjectsInColliderC);
+        foreach (GameObject obj in colliderC.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderC.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                sensor.AddObservation(timeInside);
+            }
+        }
+        int numObjectsInColliderD = colliderD.GetComponent<AgentCollider>().objectsInsideCollider.Count;
+        sensor.AddObservation(numObjectsInColliderD);
+        foreach (GameObject obj in colliderD.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderD.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                sensor.AddObservation(timeInside);
+            }
+        }
+    }
+
+        // Recompensa baseada no tempo que os objetos estão em cada collider
+        foreach (GameObject obj in colliderA.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderA.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                if (timeInside < 20f)
+                {
+                    reward += 0.1f;
+                }
+            }
+        }
+        foreach (GameObject obj in colliderB.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderB.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                if (timeInside < 20f)
+                {
+                    reward += 0.1f;
+                }
+            }
+        }
+        foreach (GameObject obj in colliderC.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderC.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                if (timeInside < 20f)
+                {
+                    reward += 0.1f;
+                }
+            }
+        }
+        foreach (GameObject obj in colliderD.GetComponent<AgentCollider>().objectsInsideCollider)
+        {
+            if (obj.CompareTag("AutonomousVehicle"))
+            {
+                float timeInside = Time.time - colliderD.GetComponent<AgentCollider>().timesInsideCollider[obj];
+                if (timeInside < 20f)
+                {
+                    reward += 0.1f;
+                }
+            }
+        }
