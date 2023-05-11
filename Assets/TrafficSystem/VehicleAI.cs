@@ -65,6 +65,13 @@ namespace TrafficSimulation {
 
         void Start()
         {
+            GameObject trafficSystemObject = GameObject.Find("Traffic System");
+            
+            if (trafficSystemObject != null)
+            {
+                trafficSystem = trafficSystemObject.GetComponent<TrafficSystem>();
+            }
+
             wheelDrive = this.GetComponent<WheelDrive>();
 
             if(trafficSystem == null)
