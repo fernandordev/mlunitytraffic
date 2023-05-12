@@ -8,20 +8,24 @@ public class CarSpawner : MonoBehaviour
     [SerializeField]
     private float interval = 5f;
 
+    [SerializeField]
+    private int maxChildren = 12;
+
     float timer;
 
-    void Update()
+    void FixedUpdate()
     {
         timer += Time.deltaTime;
         if (timer >= interval)
         {
-            int randomIndex = Random.Range(0, objectsToCreate.Count);
-            GameObject objectToCreate = Instantiate(objectsToCreate[randomIndex], transform);
-            DestroyTimer destroyTimer = objectToCreate.AddComponent<DestroyTimer>();
+            // Check if the maximum number of children has been reached
+            if (transform.childCount < maxChildren)
+            {
+                int randomIndex = Random.Range(0, objectsToCreate.Count);
+                GameObject objectToCreate = Instantiate(objectsToCreate[randomIndex], transform);
 
-            destroyTimer.timer = 50f;
-
-            timer -= interval;
+                timer -= interval;
+            }
         }
     }
 }
