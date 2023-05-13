@@ -33,7 +33,7 @@ public class IntersectionController : MonoBehaviour
         else
         {
             timeSinceLastSwitch += Time.deltaTime;
-            if (timeSinceLastSwitch >= 8f)
+            if (timeSinceLastSwitch >= 7f)
             {
                 canSwitchLights = true;
             }

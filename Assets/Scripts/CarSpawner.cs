@@ -13,18 +13,18 @@ public class CarSpawner : MonoBehaviour
 
     float timer;
 
-    void FixedUpdate()
+    void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= interval)
+
+        // Check if the maximum number of children has been reached
+        if (transform.childCount < maxChildren)
         {
-            // Check if the maximum number of children has been reached
-            if (transform.childCount < maxChildren)
+            if (timer >= interval)
             {
                 int randomIndex = Random.Range(0, objectsToCreate.Count);
                 GameObject objectToCreate = Instantiate(objectsToCreate[randomIndex], transform);
-
-                timer -= interval;
+                timer = 0f; // Reset the timer
             }
         }
     }

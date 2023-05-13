@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
 public class AgentCollider : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AgentCollider : MonoBehaviour
     public List<GameObject> objectsInsideCollider = new List<GameObject>();
     public string tagToDetect = "AutonomousVehicle";
     public Dictionary<GameObject, float> timesInsideCollider = new Dictionary<GameObject, float>();
+
+    public TextMeshProUGUI averageTimeText;
 
     private void OnDrawGizmosSelected()
     {
@@ -47,6 +50,42 @@ public class AgentCollider : MonoBehaviour
         }
     }
 
+    public void UpdateAverageTimeText()
+    {
+        float totalTime = 0;
+        int count = 0;
+
+        foreach (GameObject gameObject in objectsInsideCollider)
+        {
+            if (timesInsideCollider.ContainsKey(gameObject))
+            {
+                float timeInside = Time.time - timesInsideCollider[gameObject];
+                totalTime += timeInside;
+                count++;
+            }
+        }
+
+        if (count > 0)
+        {
+            float averageTime = totalTime / count;
+            averageTimeText.text = "Average time inside: " + averageTime.ToString("F1") + " seconds";
+
+            if (averageTime > 10)
+            {
+                averageTimeText.color = Color.red;
+            }
+            else
+            {
+                averageTimeText.color = Color.black;
+            }
+        }
+        else
+        {
+            averageTimeText.text = "Average time inside: N/A";
+            averageTimeText.color = Color.black;
+        }
+    }
+
     private void Update()
     {
         for (int i = objectsInsideCollider.Count - 1; i >= 0; i--)
@@ -58,6 +97,8 @@ public class AgentCollider : MonoBehaviour
                 objectsInsideCollider.RemoveAt(i);
             }
         }
+        UpdateAverageTimeText();
+
     }
 
     private void OnTriggerEnter(Collider other)
