@@ -19,16 +19,8 @@ public class AgentCollider : MonoBehaviour
             Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
         }
 
-        for (int i = objectsInsideCollider.Count - 1; i >= 0; i--)
+        foreach (GameObject gameObject in objectsInsideCollider)
         {
-            GameObject gameObject = objectsInsideCollider[i];
-            if (gameObject == null)
-            {
-                // The game object has been destroyed, remove it from the list
-                objectsInsideCollider.RemoveAt(i);
-                continue;
-            }
-
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
             if (rb == null || rb.velocity.magnitude < 0.01f)
@@ -51,6 +43,19 @@ public class AgentCollider : MonoBehaviour
                 style.alignment = TextAnchor.MiddleCenter;
                 style.normal.textColor = Color.black;
                 Handles.Label(textPosition, timeString, style);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = objectsInsideCollider.Count - 1; i >= 0; i--)
+        {
+            GameObject gameObject = objectsInsideCollider[i];
+            if (gameObject == null)
+            {
+                // The game object has been destroyed, remove it from the list
+                objectsInsideCollider.RemoveAt(i);
             }
         }
     }

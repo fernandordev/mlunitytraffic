@@ -18,6 +18,6 @@ public class ColliderCounter : MonoBehaviour
         count++; // incrementa o contador ao detectar a colisão com outro objeto
         elapsedTime = Time.time - startTime; // calcula o tempo decorrido desde o início da contagem
         float average = count / elapsedTime * 60; // calcula a média de objetos por minuto
-        displayText.text = "Carros: " + count.ToString() + "\nMédia: " + average.ToString("F2") + " por minuto"; // atualiza o texto da UI com o novo valor do contador e da média
+        displayText.text = "Carros: " + count.ToString() + "\nMédia: " + average.ToString("F2") + " por minuto" + "\nTempo decorrido: " + elapsedTime.ToString("F0") + " segundos"; ; // atualiza o texto da UI com o novo valor do contador e da média
     }
 }
