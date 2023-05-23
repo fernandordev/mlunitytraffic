@@ -10,32 +10,37 @@ public class IntersectionController : MonoBehaviour
     public GameObject[] group2Colliders;
     private float timeSinceLastSwitch = 0f;
     private bool canSwitchLights = true;
+    [SerializeField]
+    private bool canManageTraffic = false;
 
     void Update()
     {
-        if (canSwitchLights)
+        if (canManageTraffic)
         {
-            int numObjectsInGroup1 = CountObjectsInsideColliders(group1Colliders);
-            int numObjectsInGroup2 = CountObjectsInsideColliders(group2Colliders);
-
-            if (numObjectsInGroup1 > numObjectsInGroup2)
+            if (canSwitchLights)
             {
-                intersection.SwitchLightsToGroup1();
+                int numObjectsInGroup1 = CountObjectsInsideColliders(group1Colliders);
+                int numObjectsInGroup2 = CountObjectsInsideColliders(group2Colliders);
+
+                if (numObjectsInGroup1 > numObjectsInGroup2)
+                {
+                    intersection.SwitchLightsToGroup1();
+                }
+                else
+                {
+                    intersection.SwitchLightsToGroup2();
+                }
+
+                timeSinceLastSwitch = 0f;
+                canSwitchLights = false;
             }
             else
             {
-                intersection.SwitchLightsToGroup2();
-            }
-
-            timeSinceLastSwitch = 0f;
-            canSwitchLights = false;
-        }
-        else
-        {
-            timeSinceLastSwitch += Time.deltaTime;
-            if (timeSinceLastSwitch >= 7f)
-            {
-                canSwitchLights = true;
+                timeSinceLastSwitch += Time.deltaTime;
+                if (timeSinceLastSwitch >= 7f)
+                {
+                    canSwitchLights = true;
+                }
             }
         }
     }

@@ -13,6 +13,10 @@ public class AgentCollider : MonoBehaviour
 
     public TextMeshProUGUI averageTimeText;
 
+    public TextMeshProUGUI slowDownText;
+
+    private int timesLateCounter = 0;
+
     private void OnDrawGizmosSelected()
     {
         if (drawDebugBox)
@@ -70,14 +74,17 @@ public class AgentCollider : MonoBehaviour
             float averageTime = totalTime / count;
             averageTimeText.text = "Average time inside: " + averageTime.ToString("F1") + " seconds";
 
-            if (averageTime > 10)
+            if (averageTime > 15)
             {
                 averageTimeText.color = Color.red;
+                timesLateCounter++;
             }
             else
             {
                 averageTimeText.color = Color.black;
             }
+
+            slowDownText.text = "Vezes que ficou lento: " + timesLateCounter.ToString("F0");
         }
         else
         {

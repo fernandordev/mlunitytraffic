@@ -9,7 +9,7 @@ public class GlobalTimer : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 10.0f;
+        // Time.timeScale = 10.0f;
         startTimeRealtime = Time.time; // armazena o tempo de início da contagem
     }
 
