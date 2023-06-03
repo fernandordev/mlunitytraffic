@@ -31,14 +31,13 @@ public class IntersectionAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        Debug.Log("Episode begin!");
+        // Debug.Log("Episode begin!");
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         int action = actionBuffers.DiscreteActions[0];
 
-        // Recompensa baseada no número de objetos em cada collider
         int numObjectsInColliderA = colliderA.GetComponent<AgentCollider>().objectsInsideCollider.Count;
         int numObjectsInColliderB = colliderB.GetComponent<AgentCollider>().objectsInsideCollider.Count;
         int numObjectsInColliderC = colliderC.GetComponent<AgentCollider>().objectsInsideCollider.Count;
@@ -46,25 +45,30 @@ public class IntersectionAgent : Agent
 
         if (numObjectsInColliderA < 6 && numObjectsInColliderB < 6)
         {
-            SetReward(1.0f);
+            AddReward(0.32f);
         }
 
         if (numObjectsInColliderC < 6 && numObjectsInColliderD < 6)
         {
-            SetReward(1.0f);
+            AddReward(0.32f);
         }
 
-        // Verifica se o tempo de troca está dentro dos limites
+
+        if ((numObjectsInColliderA + numObjectsInColliderB) < 6 && (numObjectsInColliderC + numObjectsInColliderD) > 10)
+        {
+            AddReward(-0.04f);
+        }
+
+        if ((numObjectsInColliderC + numObjectsInColliderD) < 6 && (numObjectsInColliderA + numObjectsInColliderB) > 10)
+        {
+            AddReward(-0.04f);
+        }
+
         float timeSinceLastAction = Time.time - lastActionTime;
-        if (timeSinceLastAction > 8f && timeSinceLastAction < 60f)
+        if (timeSinceLastAction > 7f)
         {
-            SetReward(1.0f);
+            AddReward(0.32f);
         }
-        else
-        {
-            EndEpisode();
-        }
-
 
         if (action == 0)
         {
@@ -73,6 +77,10 @@ public class IntersectionAgent : Agent
         else if (action == 1)
         {
             intersection.SwitchLightsToGroup2();
+        }
+        else
+        {
+            AddReward(0.04f);
         }
 
         lastActionTime = Time.time;
