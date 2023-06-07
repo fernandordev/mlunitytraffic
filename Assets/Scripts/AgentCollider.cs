@@ -72,9 +72,9 @@ public class AgentCollider : MonoBehaviour
         if (count > 0)
         {
             float averageTime = totalTime / count;
-            averageTimeText.text = "Average time inside: " + averageTime.ToString("F1") + " seconds";
+            averageTimeText.text = "Tempo Médio: " + averageTime.ToString("F1") + " s";
 
-            if (averageTime > 15)
+            if (averageTime > 20)
             {
                 averageTimeText.color = Color.red;
                 timesLateCounter++;
@@ -84,11 +84,11 @@ public class AgentCollider : MonoBehaviour
                 averageTimeText.color = Color.black;
             }
 
-            slowDownText.text = "Vezes que ficou lento: " + timesLateCounter.ToString("F0");
+            slowDownText.text = "Congestionamentos: " + timesLateCounter.ToString("F0");
         }
         else
         {
-            averageTimeText.text = "Average time inside: N/A";
+            averageTimeText.text = "Tempo Médio: N/A";
             averageTimeText.color = Color.black;
         }
     }
@@ -105,7 +105,6 @@ public class AgentCollider : MonoBehaviour
             }
         }
         UpdateAverageTimeText();
-
     }
 
     private void OnTriggerEnter(Collider other)

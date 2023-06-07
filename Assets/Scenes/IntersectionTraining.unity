@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536f0330d0b96a54e850ed41c802661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugBox: 1
   tagToDetect: AutonomousVehicle
   objectsInsideCollider: []
   timeToDestroy: 5
@@ -1945,7 +1946,7 @@ MonoBehaviour:
   - {fileID: 6405348259312224868, guid: a42a7bb54028d2e489bbae0228ac1593, type: 3}
   - {fileID: 4607733354375307922, guid: 99a57e3d23f187444915870a12ad00c5, type: 3}
   interval: 5
-  maxChildren: 12
+  maxChildren: 10
 --- !u!1 &246473369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2299,7 @@ MonoBehaviour:
   - {fileID: 6405348259312224868, guid: a42a7bb54028d2e489bbae0228ac1593, type: 3}
   - {fileID: 4607733354375307922, guid: 99a57e3d23f187444915870a12ad00c5, type: 3}
   interval: 5
-  maxChildren: 12
+  maxChildren: 10
 --- !u!4 &277113554
 Transform:
   m_ObjectHideFlags: 0
@@ -2768,7 +2769,7 @@ MonoBehaviour:
   - {fileID: 6405348259312224868, guid: a42a7bb54028d2e489bbae0228ac1593, type: 3}
   - {fileID: 4607733354375307922, guid: 99a57e3d23f187444915870a12ad00c5, type: 3}
   interval: 5
-  maxChildren: 12
+  maxChildren: 10
 --- !u!4 &422307237
 Transform:
   m_ObjectHideFlags: 0
@@ -3604,7 +3605,7 @@ MonoBehaviour:
   - {fileID: 6405348259312224868, guid: a42a7bb54028d2e489bbae0228ac1593, type: 3}
   - {fileID: 4607733354375307922, guid: 99a57e3d23f187444915870a12ad00c5, type: 3}
   interval: 5
-  maxChildren: 12
+  maxChildren: 10
 --- !u!4 &603208728
 Transform:
   m_ObjectHideFlags: 0
@@ -4290,6 +4291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536f0330d0b96a54e850ed41c802661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugBox: 1
   tagToDetect: AutonomousVehicle
   objectsInsideCollider: []
   timeToDestroy: 5
@@ -6807,6 +6809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536f0330d0b96a54e850ed41c802661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugBox: 1
   tagToDetect: AutonomousVehicle
   objectsInsideCollider: []
   timeToDestroy: 5
@@ -7611,7 +7614,7 @@ MonoBehaviour:
   intersectionType: 1
   id: 0
   prioritySegments: []
-  lightsDuration: 8
+  lightsDuration: 30
   orangeLightDuration: 2
   lightsNbr1:
   - {fileID: 1473975497}
@@ -9574,9 +9577,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 8219e3c8be84f134591d8e40146894f1, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: IntersectionBehavior
   TeamId: 0
   m_UseChildSensors: 1
@@ -10813,7 +10816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948352045}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1a03a32188dc0e4597c4f56dce2716d, type: 3}
   m_Name: 
@@ -10825,7 +10828,7 @@ MonoBehaviour:
   group2Colliders:
   - {fileID: 851806212}
   - {fileID: 1011415973}
-  canManageTraffic: 1
+  canManageTraffic: 0
 --- !u!4 &1948352047
 Transform:
   m_ObjectHideFlags: 0
@@ -11542,6 +11545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536f0330d0b96a54e850ed41c802661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDebugBox: 1
   tagToDetect: AutonomousVehicle
   objectsInsideCollider: []
   timeToDestroy: 5

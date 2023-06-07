@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class CarDestroyer : MonoBehaviour
 {
+    public bool drawDebugBox = true;
     public string tagToDetect = "AutonomousVehicle";
     public List<GameObject> objectsInsideCollider = new List<GameObject>();
     [SerializeField]
@@ -29,6 +30,17 @@ public class CarDestroyer : MonoBehaviour
             objectsInsideCollider.Remove(other.gameObject);
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (drawDebugBox)
+        {
+            BoxCollider myCollider = GetComponent<BoxCollider>();
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
+        }
+    }
+
 
     void DestroyRandomObject()
     {
