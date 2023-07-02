@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GlobalTimer : MonoBehaviour
 {
@@ -17,5 +18,15 @@ public class GlobalTimer : MonoBehaviour
     {
         float elapsedTimeRealtime = Time.realtimeSinceStartup - startTimeRealtime; // calcula o tempo decorrido em tempo real
         displayText.text = elapsedTimeRealtime.ToString("F1") + " segundos"; // atualiza o texto da UI com o novo valor do contador e do tempo decorrido
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+    }
+
+    void Restart()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

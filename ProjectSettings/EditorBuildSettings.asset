@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/IntersectionTraining.unity
+    guid: 3c485e261fdbc7a4794f9528d54bf2b5
   m_configObjects: {}

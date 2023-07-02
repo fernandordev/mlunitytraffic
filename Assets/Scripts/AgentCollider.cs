@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -17,6 +16,7 @@ public class AgentCollider : MonoBehaviour
 
     private int timesLateCounter = 0;
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (drawDebugBox)
@@ -53,7 +53,7 @@ public class AgentCollider : MonoBehaviour
             }
         }
     }
-
+#endif
     public void UpdateAverageTimeText()
     {
         float totalTime = 0;
